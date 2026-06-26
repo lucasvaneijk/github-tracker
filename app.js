@@ -3,7 +3,7 @@ function search() {
     fetch(`https://api.github.com/users/${input}`
         , {
         headers: {
-            Authorization: "Bearer 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"
+            Authorization: "Bearer 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"
         }
         })
     .then(response => response.json())
@@ -11,7 +11,8 @@ function search() {
         console.log(data)
         console.log()
         const resultdiv = document.getElementById("resultdiv")
-        if (data.messages === null) {
+        console.log(data.status)
+        if (data.status !== undefined) {
             resultdiv.innerText = `user ${input} not found`
             return
         }
@@ -25,17 +26,47 @@ function search() {
                 .then(repos => {
                     console.log(repos)
                     for (let i = 0; i < repos.length; i++) {
+                        let result = `<a target="_blank" class="reponame" href=${repos[i].html_url}>${repos[i].name}</a>`
                         const div = document.createElement("div")
-                        div.innerHTML = repos[i].name
+                        if (repos[i].description) {result += `<p class="repodiscription">${repos[i].description}</p>`}
+                        else {result += `<p>No description</p>`}
+                        fetch("https://raw.githubusercontent.com/ozh/github-colors/master/colors.json")
+                        .then(responsecolors => responsecolors.json())
+                        .then(colors => {
+                            if (repos[i].language) {result += `<p class="codelanguage" style="color: ${colors[repos[i].language]?.color};">${repos[i].language}</p>`}
+                            else {result += "<p>None</p>"}
+                            div.innerHTML = result
+                        })
+                        div.innerHTML = result
+                        div.classList.add("repodiv")
+                        
                         fragment.appendChild(div)
+                        
+                        setTimeout(() => {
+                            div.classList.add("repodivanimation");
+                        }, 10);
+
+                        document.body.style.overflow = "auto";
                     }
-                    resultdiv.appendChild(fragment)
+                    document.getElementById("projectsdiv").appendChild(fragment)
                 })
         
             }
         }
-
+        else {document.getElementById("projectstitle").innerText = "No public projects"}
+        const cards = document.querySelectorAll(".repodiv")
+        cards.forEach(card => {
+            card.addEventListener("animationend", () => {
+                card.classList.remove("repodivanimation")
+            });
+        });
+        document.getElementById("projectstitle").style.display = "grid"
+        resultdiv.style.fontSize = "4rem"
+        document.getElementById("contentdiv").style.display = "none"
         resultdiv.innerHTML = 
-        `<div class="username">${data.login}</div><img href=${data.avatar_url}>`
+        `<div class="username">${data.login}</div><img class="profilepicture" src=${data.avatar_url}>`
+    
+        fragment = document.createDocumentFragment()
+        constdocument
     })
 }

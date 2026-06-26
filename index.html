@@ -4,12 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Github tracker</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-   <input id="usernameinput"> 
-   <button onclick="search()">Search</button>
-   <div id="resultdiv">enter the username</div>
-   
+    <div class="contentdiv" id="contentdiv">   
+        <div class="titlediv">
+            <p class="title">
+                Github tracker
+            </p>
+        </div>
+        <div class="usernameinputdiv">
+            <input autocomplete="off" id="usernameinput" placeholder="enter github username" class="usernameinput"> 
+        </div>
+        <div class="searchbuttondiv">
+            <button  class="searchbutton" onclick="search()">Search</button>
+        </div>
+        <div class="resultdivdiv">
+            <div id="resultdiv" class="resultdiv"></div>
+        </div>
+    </div>
+    <div class="projectstitlediv">
+        <p class="projectstitle" id="projectstitle">Projects</p>
+    </div>
+    <button onclick="goback()" class="backbutton"><- Back</button>
+    <div class="titlecarddiv" id="titlecarddiv">
+
+    </div>
+    <div class="projectsdiv" id="projectsdiv">
+
+    </div>
    <script src="app.js"></script>
 </body>
 </html>
