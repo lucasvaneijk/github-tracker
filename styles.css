@@ -1,5 +1,9 @@
-body {
+html, body {
     margin: 0;
+    height: 100%;
+}
+
+body {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -10,6 +14,12 @@ body {
     background-image: 
     linear-gradient(to right, rgba(222, 221, 221, 0.397) 1px, transparent 1px),
     linear-gradient(to bottom,rgba(222, 221, 221, 0.397) 1px, transparent 1px);
+}
+
+body.no-scroll,
+html.no-scroll {
+    overflow: hidden;
+    height: 100vh;
 }
 
 .reponame {
@@ -25,19 +35,20 @@ body {
     margin: 2vh;
     margin-left: vw;
     border: solid 3px black;
-    border-radius: 2rem;
+    border-radius: 1rem;
     padding: 4vh;
     width: 25vw;
     background-color: #e9e9e9;
     box-shadow: 10px 10px 0px #e86112;
+    transition: zoom 0.3s ease-in-out;
 }
 
 .repodivanimation {
-    animation: 1s projectpopup ease forwards !important; 
+    animation: 1.5s projectpopup ease forwards !important; 
 }
 .repodiv:hover {
     box-shadow: 10px 10px 0px #dfdc28;
-    animation: 0.6s zoomanddisplace ease forwards;
+    zoom: 102%;
 }
 
 .title {
@@ -76,12 +87,13 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    overflow-x: hidden;
 }
 
 .projectstitle {
     display: none;
     font-size: 10vh;
-
+    animation: 2.5s projectnamepopup ease-in-out forwards;
 }
 .projectstitlediv {
     display: flex;
@@ -95,6 +107,7 @@ body {
     gap: 30px;
     max-width: 900px;
     margin: auto;
+    overflow: hidden;
 }
 
 .resultdiv {
@@ -120,11 +133,12 @@ body {
     margin: 1rem;
     animation: 1.5s buttonpopup ease-in-out forwards;
     box-shadow: 10px 8px 0px black;
+    transition: zoom 0.3s ease-in-out;
 }
 
 .searchbutton:hover {
-    background-color: #e86812;
-
+    background-color: #e88812;
+    zoom: 103%;
 }
 
 @keyframes buttonpopup {
@@ -180,14 +194,16 @@ body {
     }
 }
 
-@keyframes zoomanddissplace {
-    50% {
-        transform: translateX(5px);
-
+@keyframes projectnamepopup {
+  0% {
+        transform: translateX(-1000px);
     }
-    100% {
-        zoom: 105%;
+    85% {
+        box-shadow: none;
     }
+    100%{
+        transform: translateX(0);
+    }  
 }
 
 .usernameinput::placeholder {
@@ -198,3 +214,121 @@ body {
     opacity: 1;
 }
 
+.backbutton {
+    display: none;
+    padding: 1.5vh 2vw;
+    font-size: 15px;
+    background-color: #e86112;
+    border: none;
+    border-radius: 8px;
+    margin: 2rem;
+    left: 20%;
+    box-shadow: 5px 5px 0px;
+    animation: 1s namepopup ease-in-out forwards;
+    cursor: pointer;
+    transition: zoom 0.3s ease-in-out;
+}
+.backbutton:hover {
+    background-color: #e88812;
+    zoom: 103%;
+}
+
+.titlecarddiv {
+    margin: 2vh;
+    border: solid 3px black;
+    border-radius: 1rem;
+    padding: 4vw 2vh;
+    
+    width: 40vw;
+    height: 100rem;
+    background-color: #e9e9e9;
+    box-shadow: 10px 10px 0px #e86112;
+    transition: zoom 0.3s ease-in-out;
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    animation: 2s projectpopup ease;
+    overflow: hidden;
+}
+
+.titlecarddiv:hover {
+    zoom: 103%;
+    box-shadow: 10px 10px 0px #dfdc28;
+}
+
+.nameimagecard {
+    width: 5vh;
+    height: 5vh;
+    border-radius: 2rem;
+    margin-right: 2vw;
+}
+
+.namecard {
+    font-size: 2rem;
+}
+
+.imgnamediv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    height: 6vh;
+}
+
+.followersp {
+    margin-right: 2vw;
+    margin-bottom: 1rem;
+}
+
+.repos {
+    margin-right: 1vw;
+}
+
+.apiinput {
+    display: none;
+    border-radius: 1rem;
+    border: 1px solid #ccc;
+    width: 60vw;
+    box-shadow: 5px 5px 0px black;
+    height: 2rem;
+    margin-right: 1rem;
+    
+}
+
+.apiinput::placeholder {
+    opacity: 0;
+    margin-left: 8px;
+    transition: opacity 0.6s ease;
+}
+.apiinput:focus::placeholder {
+    opacity: 1;
+}
+
+.apibutton {
+    background-color: #e86112;
+    border: none;
+    border-radius: 8px;
+    padding: .5vh 2vw;
+    font-size: 16px;
+
+    margin-right: 1rem;
+    box-shadow: 5px 5px 0px #000;
+    cursor: pointer;
+}
+
+.apibutton:hover {
+    background-color: #e88812;
+}
+
+.apibuttondiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+    margin: 1rem;
+    animation: 3s inputpopup ease-in-out;
+
+}

@@ -8,6 +8,10 @@
 </head>
 <body>
     <div class="contentdiv" id="contentdiv">   
+        <div class="apibuttondiv">
+            <button class="apibutton" onclick="enterAPI()">api</button>
+            <input placeholder="Enter github API" class="apiinput" spellcheck="false" autocomplete="off">
+        </div>
         <div class="titlediv">
             <p class="title">
                 Github tracker
@@ -23,13 +27,14 @@
             <div id="resultdiv" class="resultdiv"></div>
         </div>
     </div>
-    <div class="projectstitlediv">
-        <p class="projectstitle" id="projectstitle">Projects</p>
-    </div>
     <button onclick="goback()" class="backbutton"><- Back</button>
     <div class="titlecarddiv" id="titlecarddiv">
 
     </div>
+    <div class="projectstitlediv">
+        <p class="projectstitle" id="projectstitle">Projects</p>
+    </div>
+    
     <div class="projectsdiv" id="projectsdiv">
 
     </div>

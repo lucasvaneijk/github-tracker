@@ -1,9 +1,16 @@
 function search() {
+    document.body.classList.add("no-scroll")
+    document.documentElement.classList.add("no-scroll")
+
     const input = document.getElementById("usernameinput").value
+    let apikey = document.querySelector(".apiinput").value
+    if (apikey !== "" && apikey.includes("github_pat_")) {apikey = `bearer ${apikey}`}
+    else {apikey = ""}
+    console.log(apikey)
     fetch(`https://api.github.com/users/${input}`
         , {
         headers: {
-            Authorization: "Bearer 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"
+            Authorization: apikey
         }
         })
     .then(response => response.json())
@@ -14,6 +21,8 @@ function search() {
         console.log(data.status)
         if (data.status !== undefined) {
             resultdiv.innerText = `user ${input} not found`
+            document.body.classList.remove("no-scroll")
+            document.documentElement.classList.remove("no-scroll")
             return
         }
         let fragment = document.createDocumentFragment()
@@ -46,27 +55,59 @@ function search() {
                             div.classList.add("repodivanimation");
                         }, 10);
 
-                        document.body.style.overflow = "auto";
                     }
                     document.getElementById("projectsdiv").appendChild(fragment)
                 })
         
             }
         }
-        else {document.getElementById("projectstitle").innerText = "No public projects"}
+        else {
+            document.getElementById("projectstitle").innerText = "No public projects"
+            document.body.classList.remove("no-scroll")
+            document.documentElement.classList.remove("no-scroll")
+        }
         const cards = document.querySelectorAll(".repodiv")
+        let finishedAnimations = 0
         cards.forEach(card => {
             card.addEventListener("animationend", () => {
                 card.classList.remove("repodivanimation")
+                finishedAnimations += 1
+                if (finishedAnimations === cards.length) {
+                    document.body.classList.remove("no-scroll")
+                    document.documentElement.classList.remove("no-scroll")
+                }
             });
         });
         document.getElementById("projectstitle").style.display = "grid"
         resultdiv.style.fontSize = "4rem"
         document.getElementById("contentdiv").style.display = "none"
-        resultdiv.innerHTML = 
-        `<div class="username">${data.login}</div><img class="profilepicture" src=${data.avatar_url}>`
-    
-        fragment = document.createDocumentFragment()
-        constdocument
+        document.querySelector(".backbutton").style.display = "flex"
+        document.querySelector(".titlecarddiv").style.display = "flex"
+        document.querySelector(".apibuttondiv").style.display = "none"
+        document.querySelector(".titlecarddiv").style.display = "flex"
+
+        document.querySelector(".titlecarddiv").innerHTML = `<div class="imgnamediv"><img class="nameimagecard" src="${data.avatar_url}"><p class="namecard">${data.login}</p></div>
+        <p>${data.bio || "no bio"}</p>
+        <p class="repos">repos: ${data.public_repos}</p>
+        <div class="imgnamediv"><p class="followersp">followers: ${data.followers}</p><p class="followersp">following: ${data.following}</p></div>`
     })
+    
+}
+
+function goback() {
+    document.body.classList.remove("no-scroll")
+    document.documentElement.classList.remove("no-scroll")
+
+    document.querySelector(".backbutton").style.display = "none"
+    document.querySelector(".projectsdiv").innerHTML = ""
+    document.getElementById("contentdiv").style.display = "flex"
+    document.querySelector(".projectstitle").style.display = "none"
+    document.querySelector(".apibuttondiv").style.display = "flex"
+    document.querySelector(".titlecarddiv").style.display = "none"
+
+}
+
+function enterAPI() {
+    document.querySelector(".apiinput").style.display = "flex"
+    document.querySelector(".apibutton").style.display = "none"
 }
