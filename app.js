@@ -85,6 +85,7 @@ function search() {
         document.querySelector(".titlecarddiv").style.display = "flex"
         document.querySelector(".apibuttondiv").style.display = "none"
         document.querySelector(".titlecarddiv").style.display = "flex"
+        document.querySelector(".contentinfodiv").style.display = "flex"
 
         document.querySelector(".titlecarddiv").innerHTML = `<div class="imgnamediv"><img class="nameimagecard" src="${data.avatar_url}"><p class="namecard">${data.login}</p></div>
         <p>${data.bio || "no bio"}</p>
@@ -97,7 +98,7 @@ function search() {
 function goback() {
     document.body.classList.remove("no-scroll")
     document.documentElement.classList.remove("no-scroll")
-
+    document.querySelector(".contentinfodiv").style.display = "none"
     document.querySelector(".backbutton").style.display = "none"
     document.querySelector(".projectsdiv").innerHTML = ""
     document.getElementById("contentdiv").style.display = "flex"

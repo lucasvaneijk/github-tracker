@@ -1,11 +1,11 @@
 html, body {
     margin: 0;
     height: 100%;
+    background-color: blueviolet;
 }
 
 body {
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
     overflow: hidden;
@@ -35,7 +35,7 @@ html.no-scroll {
     margin: 2vh;
     margin-left: vw;
     border: solid 3px black;
-    border-radius: 1rem;
+    border-radius: 2vh;
     padding: 4vh;
     width: 25vw;
     background-color: #e9e9e9;
@@ -59,7 +59,7 @@ html.no-scroll {
 
 .usernameinput {
     padding: 12px 16px;
-    border-radius: 1rem;
+    border-radius: 2vh;
     border: 1px solid #ccc;
     width: 280px;
     box-shadow: 10px 8px 0px black;
@@ -107,7 +107,7 @@ html.no-scroll {
     gap: 30px;
     max-width: 900px;
     margin: auto;
-    overflow: hidden;
+
 }
 
 .resultdiv {
@@ -129,8 +129,8 @@ html.no-scroll {
     padding: 3vh 5vw;
     cursor: pointer;
     border: none;
-    border-radius: 1rem;
-    margin: 1rem;
+    border-radius: 4vh;
+    margin: 3vh;
     animation: 1.5s buttonpopup ease-in-out forwards;
     box-shadow: 10px 8px 0px black;
     transition: zoom 0.3s ease-in-out;
@@ -220,13 +220,14 @@ html.no-scroll {
     font-size: 15px;
     background-color: #e86112;
     border: none;
-    border-radius: 8px;
-    margin: 2rem;
+    border-radius: 1vh;
+    margin: 4vh;
     left: 20%;
     box-shadow: 5px 5px 0px;
     animation: 1s namepopup ease-in-out forwards;
     cursor: pointer;
     transition: zoom 0.3s ease-in-out;
+    width: 9vw;
 }
 .backbutton:hover {
     background-color: #e88812;
@@ -236,11 +237,11 @@ html.no-scroll {
 .titlecarddiv {
     margin: 2vh;
     border: solid 3px black;
-    border-radius: 1rem;
-    padding: 4vw 2vh;
-    
+    border-radius: 2vh;
+    padding: 6rem 2rem ;
+    align-self: center;
     width: 40vw;
-    height: 100rem;
+    height: 1400vh;
     background-color: #e9e9e9;
     box-shadow: 10px 10px 0px #e86112;
     transition: zoom 0.3s ease-in-out;
@@ -260,12 +261,12 @@ html.no-scroll {
 .nameimagecard {
     width: 5vh;
     height: 5vh;
-    border-radius: 2rem;
+    border-radius: 4vh;
     margin-right: 2vw;
 }
 
 .namecard {
-    font-size: 2rem;
+    font-size: 4vh;
 }
 
 .imgnamediv {
@@ -279,7 +280,7 @@ html.no-scroll {
 
 .followersp {
     margin-right: 2vw;
-    margin-bottom: 1rem;
+    margin-bottom: 3vh;
 }
 
 .repos {
@@ -288,13 +289,16 @@ html.no-scroll {
 
 .apiinput {
     display: none;
-    border-radius: 1rem;
+    border-radius: 2vh;
     border: 1px solid #ccc;
     width: 60vw;
     box-shadow: 5px 5px 0px black;
-    height: 2rem;
-    margin-right: 1rem;
-    
+    height: 4vh;
+    margin-right: 3vw;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 1s ease;
+
 }
 
 .apiinput::placeholder {
@@ -312,8 +316,7 @@ html.no-scroll {
     border-radius: 8px;
     padding: .5vh 2vw;
     font-size: 16px;
-
-    margin-right: 1rem;
+    margin-right: 2vw;
     box-shadow: 5px 5px 0px #000;
     cursor: pointer;
 }
@@ -328,7 +331,14 @@ html.no-scroll {
     justify-content: end;
     align-items: center;
     width: 100%;
-    margin: 1rem;
+    margin: 1vh;
     animation: 3s inputpopup ease-in-out;
+}
 
+.contentinfodiv {
+    overflow-x: auto;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    display: none;
 }
