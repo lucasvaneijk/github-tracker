@@ -3,10 +3,10 @@ it is a application to track stats on github
 
 ## table of contents
 
-<a href="#overview">Overview</a>
-<a href="#tech-stack">Tech stack</a>
-<a href="#not-using-the-site">Not using the site</a>
-<a href="#usage">Usage</a>
+<a href="#overview">Overview</a> <br>
+<a href="#tech-stack">Tech stack</a> <br>
+<a href="#not-using-the-site">Not using the site</a> <br>
+<a href="#usage">Usage</a> <br>
 <a href="#api-key">Api key</a>
 ## Overview
 This is the github page for my awsome website. It includes the source code for the website.
